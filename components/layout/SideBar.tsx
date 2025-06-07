@@ -18,7 +18,7 @@ const Sidebar = () => {
   return (
     <div className="w-64 bg-white shadow-lg h-full">
       <div className="p-6">
-        <h1 className="text-2xl font-bold text-gray-800">Property Manager</h1>
+        <h1 className="text-2xl font-bold text-gray-800">Naku Ekhaya</h1>
       </div>
       <nav className="mt-6">
         {navItems.map((item) => {
