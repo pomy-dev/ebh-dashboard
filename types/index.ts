@@ -28,3 +28,26 @@ export interface Fault {
   propertyName: string;
   unit: string;
 }
+
+export interface Tenant {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  propertyName: string;
+  unit: string;
+  monthlyRent: number;
+  leaseStart: string;
+  leaseEnd: string;
+  status: 'active' | 'pending' | 'expired';
+  emergencyContact: {
+    name: string;
+    phone: string;
+    relationship: string;
+  };
+  paymentHistory: {
+    totalPaid: number;
+    lastPayment: string;
+    outstandingBalance: number;
+  };
+}

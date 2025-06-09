@@ -6,7 +6,7 @@ import Layout from '@/components/layout/Layout'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Modern Apartment Rental Dashboard',
+  title: 'Naku eKhaya',
   description: 'Professional property management dashboard',
 }
 

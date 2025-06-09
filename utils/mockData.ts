@@ -1,4 +1,4 @@
-import { Property, Payment, Fault } from '../types';
+import { Property, Payment, Fault, Tenant } from '@/types';
 
 export const properties: Property[] = [
   {
@@ -57,6 +57,30 @@ export const payments: Payment[] = [
     date: '2024-02-28',
     status: 'overdue',
     propertyName: 'City Heights'
+  },
+  {
+    id: '4',
+    tenantName: 'Sarah Wilson',
+    amount: 2500,
+    date: '2024-03-01',
+    status: 'paid',
+    propertyName: 'Sunset Apartments'
+  },
+  {
+    id: '5',
+    tenantName: 'David Brown',
+    amount: 3000,
+    date: '2024-03-03',
+    status: 'paid',
+    propertyName: 'Ocean View Complex'
+  },
+  {
+    id: '6',
+    tenantName: 'Emily Davis',
+    amount: 3500,
+    date: '2024-03-01',
+    status: 'pending',
+    propertyName: 'City Heights'
   }
 ];
 
@@ -90,5 +114,184 @@ export const faults: Fault[] = [
     dateReported: '2024-02-28',
     propertyName: 'City Heights',
     unit: '23C'
+  }
+];
+
+export const tenants: Tenant[] = [
+  {
+    id: '1',
+    name: 'John Doe',
+    email: 'john.doe@email.com',
+    phone: '(555) 123-4567',
+    propertyName: 'Sunset Apartments',
+    unit: '12B',
+    monthlyRent: 2500,
+    leaseStart: '2023-06-01',
+    leaseEnd: '2024-05-31',
+    status: 'active',
+    emergencyContact: {
+      name: 'Jane Doe',
+      phone: '(555) 987-6543',
+      relationship: 'Spouse'
+    },
+    paymentHistory: {
+      totalPaid: 22500,
+      lastPayment: '2024-03-01',
+      outstandingBalance: 0
+    }
+  },
+  {
+    id: '2',
+    name: 'Jane Smith',
+    email: 'jane.smith@email.com',
+    phone: '(555) 234-5678',
+    propertyName: 'Ocean View Complex',
+    unit: '45A',
+    monthlyRent: 3000,
+    leaseStart: '2023-08-15',
+    leaseEnd: '2024-08-14',
+    status: 'active',
+    emergencyContact: {
+      name: 'Robert Smith',
+      phone: '(555) 876-5432',
+      relationship: 'Father'
+    },
+    paymentHistory: {
+      totalPaid: 21000,
+      lastPayment: '2024-02-01',
+      outstandingBalance: 3000
+    }
+  },
+  {
+    id: '3',
+    name: 'Mike Johnson',
+    email: 'mike.johnson@email.com',
+    phone: '(555) 345-6789',
+    propertyName: 'City Heights',
+    unit: '23C',
+    monthlyRent: 3500,
+    leaseStart: '2023-09-01',
+    leaseEnd: '2024-08-31',
+    status: 'active',
+    emergencyContact: {
+      name: 'Lisa Johnson',
+      phone: '(555) 765-4321',
+      relationship: 'Sister'
+    },
+    paymentHistory: {
+      totalPaid: 21000,
+      lastPayment: '2024-01-28',
+      outstandingBalance: 7000
+    }
+  },
+  {
+    id: '4',
+    name: 'Sarah Wilson',
+    email: 'sarah.wilson@email.com',
+    phone: '(555) 456-7890',
+    propertyName: 'Sunset Apartments',
+    unit: '8A',
+    monthlyRent: 2500,
+    leaseStart: '2023-07-01',
+    leaseEnd: '2024-06-30',
+    status: 'active',
+    emergencyContact: {
+      name: 'Mark Wilson',
+      phone: '(555) 654-3210',
+      relationship: 'Brother'
+    },
+    paymentHistory: {
+      totalPaid: 20000,
+      lastPayment: '2024-03-01',
+      outstandingBalance: 0
+    }
+  },
+  {
+    id: '5',
+    name: 'David Brown',
+    email: 'david.brown@email.com',
+    phone: '(555) 567-8901',
+    propertyName: 'Ocean View Complex',
+    unit: '67B',
+    monthlyRent: 3000,
+    leaseStart: '2023-10-01',
+    leaseEnd: '2024-09-30',
+    status: 'active',
+    emergencyContact: {
+      name: 'Mary Brown',
+      phone: '(555) 543-2109',
+      relationship: 'Mother'
+    },
+    paymentHistory: {
+      totalPaid: 15000,
+      lastPayment: '2024-03-03',
+      outstandingBalance: 0
+    }
+  },
+  {
+    id: '6',
+    name: 'Emily Davis',
+    email: 'emily.davis@email.com',
+    phone: '(555) 678-9012',
+    propertyName: 'City Heights',
+    unit: '89D',
+    monthlyRent: 3500,
+    leaseStart: '2023-11-15',
+    leaseEnd: '2024-11-14',
+    status: 'active',
+    emergencyContact: {
+      name: 'Tom Davis',
+      phone: '(555) 432-1098',
+      relationship: 'Father'
+    },
+    paymentHistory: {
+      totalPaid: 14000,
+      lastPayment: '2024-02-15',
+      outstandingBalance: 3500
+    }
+  },
+  {
+    id: '7',
+    name: 'Alex Rodriguez',
+    email: 'alex.rodriguez@email.com',
+    phone: '(555) 789-0123',
+    propertyName: 'Sunset Apartments',
+    unit: '34C',
+    monthlyRent: 2500,
+    leaseStart: '2023-05-01',
+    leaseEnd: '2024-04-30',
+    status: 'pending',
+    emergencyContact: {
+      name: 'Maria Rodriguez',
+      phone: '(555) 321-0987',
+      relationship: 'Spouse'
+    },
+    paymentHistory: {
+      totalPaid: 25000,
+      lastPayment: '2024-03-01',
+      outstandingBalance: 0
+    }
+  },
+  {
+    id: '8',
+    name: 'Lisa Thompson',
+    email: 'lisa.thompson@email.com',
+    phone: '(555) 890-1234',
+    propertyName: 'Ocean View Complex',
+    unit: '12F',
+    monthlyRent: 3000,
+    leaseStart: '2022-12-01',
+    leaseEnd: '2023-11-30',
+    status: 'expired',
+    emergencyContact: {
+      name: 'John Thompson',
+      phone: '(555) 210-9876',
+      relationship: 'Brother'
+    },
+    paymentHistory: {
+      totalPaid: 36000,
+      lastPayment: '2023-11-01',
+      outstandingBalance: 0
+    }
   }
 ];

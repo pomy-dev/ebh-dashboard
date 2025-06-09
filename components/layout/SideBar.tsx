@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, CreditCard, AlertTriangle, Building2 } from 'lucide-react';
+import { Home, CreditCard, AlertTriangle, Building2, Users } from 'lucide-react';
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -13,12 +13,13 @@ const Sidebar = () => {
     { path: '/payments', icon: CreditCard, label: 'Payments' },
     { path: '/fault', icon: AlertTriangle, label: 'Queries' },
     { path: '/properties', icon: Building2, label: 'Properties' },
+    { path: '/tenants', icon: Users, label: 'Tenants' },
   ];
 
   return (
     <div className="w-64 bg-white shadow-lg h-full">
       <div className="p-6">
-        <h1 className="text-2xl font-bold text-gray-800">Naku Ekhaya</h1>
+        <h1 className="text-2xl font-bold text-gray-800">Naku eKhaya</h1>
       </div>
       <nav className="mt-6">
         {navItems.map((item) => {

@@ -1,7 +1,9 @@
 import React from 'react';
 import { Building2, Home, Users, Percent } from 'lucide-react';
 import StatCard from '@/components/dashboard/StatCard';
-import { properties } from '@/utils/mockData';
+import PaymentsOverview from '@/components/dashboard/PaymentOverview';
+import QueriesOverview from '@/components/dashboard/QuerieOverview';
+import { properties, payments, faults } from '@/utils/mockData';
 
 const Dashboard = () => {
   // Calculate total statistics
@@ -11,9 +13,10 @@ const Dashboard = () => {
   const occupancyRate = ((totalOccupied / totalUnits) * 100).toFixed(1);
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">Dashboard Overview</h1>
+    <div className="p-6 space-y-8">
+      <h1 className="text-2xl font-bold text-gray-800">Dashboard Overview</h1>
 
+      {/* Main Stats */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard
           title="Total Properties"
@@ -39,7 +42,11 @@ const Dashboard = () => {
         />
       </div>
 
-      {/* Additional dashboard content will be added here */}
+      {/* Payments and Queries Overview */}
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+        <PaymentsOverview payments={payments} />
+        <QueriesOverview faults={faults} />
+      </div>
     </div>
   );
 };
