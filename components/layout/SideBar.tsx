@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Home, CreditCard, AlertTriangle, Building2, Users } from 'lucide-react';
+import logo from '../../assets/images/logo.png';
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -19,7 +20,7 @@ const Sidebar = () => {
   return (
     <div className="w-64 bg-white shadow-lg h-full">
       <div className="p-6">
-        <h1 className="text-2xl font-bold text-gray-800">Naku eKhaya</h1>
+        <img src={logo.src} alt="logo" className="rounded-lg shadow-lg fade-edge" />
       </div>
       <nav className="mt-6">
         {navItems.map((item) => {

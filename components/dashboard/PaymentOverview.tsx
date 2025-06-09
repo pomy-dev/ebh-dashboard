@@ -77,7 +77,7 @@ const PaymentsOverview: React.FC<PaymentsOverviewProps> = ({ payments }) => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-gray-600">{stat.title}</p>
-                <p className="text-2xl font-semibold mt-2">{stat.value}</p>
+                <p className="text-2xl text-slate-400 font-semibold mt-2">{stat.value}</p>
                 {stat.trend && (
                   <div className="flex items-center mt-2">
                     <span className={`text-sm ${stat.trend.isPositive ? 'text-green-500' : 'text-red-500'}`}>

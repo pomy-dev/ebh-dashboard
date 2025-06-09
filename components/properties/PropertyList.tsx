@@ -21,7 +21,7 @@ const PropertyList: React.FC<PropertyListProps> = ({ properties }) => {
             <div className="mt-4 space-y-2">
               <div className="flex justify-between">
                 <span className="text-gray-600">Total Units</span>
-                <span className="font-medium">{property.units}</span>
+                <span className="font-medium px-6 py-1 rounded-full bg-slate-100 text-slate-700">{property.units}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">Occupied</span>
@@ -33,7 +33,7 @@ const PropertyList: React.FC<PropertyListProps> = ({ properties }) => {
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">Monthly Rent</span>
-                <span className="font-medium">${property.monthlyRent}</span>
+                <span className="font-medium text-slate-400">${property.monthlyRent}</span>
               </div>
             </div>
           </div>
