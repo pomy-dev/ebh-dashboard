@@ -1,4 +1,5 @@
 import { Property, Payment, Fault, Tenant } from '@/types';
+import { staticImages } from '@/components/staticImages/images';
 
 export const properties: Property[] = [
   {
@@ -9,7 +10,7 @@ export const properties: Property[] = [
     occupied: 45,
     available: 5,
     monthlyRent: 2500,
-    imageUrl: 'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg'
+    imageUrl: staticImages.home1.src
   },
   {
     id: '2',
@@ -19,7 +20,7 @@ export const properties: Property[] = [
     occupied: 70,
     available: 5,
     monthlyRent: 3000,
-    imageUrl: 'https://images.pexels.com/photos/1838640/pexels-photo-1838640.jpeg'
+    imageUrl: staticImages.home2.src
   },
   {
     id: '3',
@@ -29,7 +30,7 @@ export const properties: Property[] = [
     occupied: 92,
     available: 8,
     monthlyRent: 3500,
-    imageUrl: 'https://images.pexels.com/photos/2462015/pexels-photo-2462015.jpeg'
+    imageUrl: staticImages.home3.src
   }
 ];
 

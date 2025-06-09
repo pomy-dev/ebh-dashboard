@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { Tenant } from '@/types';
-import { Filter, Download, FileText, FileSpreadsheet, FileX, User, Phone, Mail, MapPin, Calendar, DollarSign } from 'lucide-react';
+import { Filter, Download, FileText, FileSpreadsheet, FileX, User, Phone, Mail, MapPin, Calendar, DollarSign, Edit } from 'lucide-react';
 
 interface TenantsListProps {
   tenants: Tenant[];
@@ -298,16 +298,23 @@ const TenantsList: React.FC<TenantsListProps> = ({ tenants }) => {
           <div key={tenant.id} className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow">
             {/* Header */}
             <div className="flex items-start justify-between mb-4">
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center justify-start space-x-3">
                 <div className="p-2 bg-blue-100 rounded-lg">
                   <User className="w-5 h-5 text-blue-600" />
                 </div>
+
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800">{tenant.name}</h3>
                   <span className={`px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(tenant.status)}`}>
                     {tenant.status}
                   </span>
                 </div>
+
+                <button className="px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 text-gray-800 ml-[60px]" onClick={() => alert('Edit tenant functionality still coming  soon!')}>
+                  <span>
+                    <Edit />
+                  </span>
+                </button>
               </div>
             </div>
 

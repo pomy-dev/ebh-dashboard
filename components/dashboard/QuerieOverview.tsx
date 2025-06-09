@@ -89,7 +89,7 @@ const QueriesOverview: React.FC<QueriesOverviewProps> = ({ faults }) => {
             <div className="flex items-center justify-evenly">
               <div>
                 <p className="text-sm font-medium text-gray-600">{stat.title}</p>
-                <p className="text-2xl font-semibold mt-2">{stat.value}</p>
+                <p className="text-2xl text-slate-400 font-semibold mt-2">{stat.value}</p>
                 {stat.trend && (
                   <div className="flex items-center mt-2">
                     <span className="text-sm text-green-500">

@@ -19,7 +19,7 @@ const StatCard = ({ title, value, icon: Icon, trend }: StatCardProps) => {
       <div className="flex items-center justify-between">
         <div>
           <p className="text-sm font-medium text-gray-600">{title}</p>
-          <p className="text-2xl font-semibold mt-2">{value}</p>
+          <p className="text-2xl text-slate-400 font-semibold mt-2">{value}</p>
           {trend && (
             <div className="flex items-center mt-2">
               <span className={`text-sm ${trend.isPositive ? 'text-green-500' : 'text-red-500'}`}>
