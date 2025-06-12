@@ -1,5 +1,7 @@
-import React from 'react';
-import { MessageSquare, AlertTriangle, CheckCircle, Clock } from 'lucide-react';
+"use client";
+
+import React, { useState } from 'react';
+import { MessageSquare, AlertTriangle, CheckCircle, Clock, ChevronDown, ChevronUp } from 'lucide-react';
 import { Fault } from '@/types';
 
 interface QueriesOverviewProps {
@@ -7,6 +9,8 @@ interface QueriesOverviewProps {
 }
 
 const QueriesOverview: React.FC<QueriesOverviewProps> = ({ faults }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   // Calculate fault statistics
   const totalFaults = faults.length;
   const openFaults = faults.filter(f => f.status === 'open').length;
@@ -76,6 +80,9 @@ const QueriesOverview: React.FC<QueriesOverviewProps> = ({ faults }) => {
     }
   };
 
+  // Show only first 4 faults by default, all when expanded
+  const displayedFaults = isExpanded ? recentFaults : recentFaults.slice(0, 4);
+
   return (
     <div className="space-y-6">
       <h2 className="text-xl font-semibold text-gray-800">Queries Overview</h2>
@@ -117,9 +124,26 @@ const QueriesOverview: React.FC<QueriesOverviewProps> = ({ faults }) => {
 
       {/* Recent Queries */}
       <div className="bg-white rounded-xl shadow-sm p-6">
-        <h3 className="text-lg font-semibold text-gray-800 mb-4">Recent Queries</h3>
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-lg font-semibold text-gray-800">Recent Queries</h3>
+          {faults.length > 4 && (
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="flex items-center space-x-1 text-blue-600 hover:text-blue-700 transition-colors"
+            >
+              <span className="text-sm font-medium">
+                {isExpanded ? 'Show Less' : 'Expand'}
+              </span>
+              {isExpanded ? (
+                <ChevronUp className="w-4 h-4" />
+              ) : (
+                <ChevronDown className="w-4 h-4" />
+              )}
+            </button>
+          )}
+        </div>
         <div className="space-y-4">
-          {recentFaults.map((fault) => (
+          {displayedFaults.map((fault) => (
             <div key={fault.id} className="flex items-center justify-between py-3 border-b border-gray-100 last:border-b-0">
               <div className="flex-1">
                 <p className="font-medium text-gray-800">{fault.title}</p>
@@ -135,7 +159,7 @@ const QueriesOverview: React.FC<QueriesOverviewProps> = ({ faults }) => {
               </div>
             </div>
           ))}
-          {recentFaults.length === 0 && (
+          {displayedFaults.length === 0 && (
             <p className="text-gray-500 text-center py-4">No queries reported yet.</p>
           )}
         </div>

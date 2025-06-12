@@ -1,5 +1,7 @@
-import React from 'react';
-import { DollarSign, TrendingUp, TrendingDown, Clock } from 'lucide-react';
+"use client";
+
+import React, { useState } from 'react';
+import { DollarSign, TrendingUp, TrendingDown, Clock, ChevronDown, ChevronUp } from 'lucide-react';
 import { Payment } from '@/types';
 
 interface PaymentsOverviewProps {
@@ -7,6 +9,8 @@ interface PaymentsOverviewProps {
 }
 
 const PaymentsOverview: React.FC<PaymentsOverviewProps> = ({ payments }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   // Calculate payment statistics
   const totalRevenue = payments
     .filter(p => p.status === 'paid')
@@ -64,6 +68,9 @@ const PaymentsOverview: React.FC<PaymentsOverviewProps> = ({ payments }) => {
     }
   ];
 
+  // Show only first 4 payments by default, all when expanded
+  const displayedPayments = isExpanded ? payments : payments.slice(0, 4);
+
   return (
     <div className="space-y-6">
       <h2 className="text-xl font-semibold text-gray-800">Payments Overview</h2>
@@ -94,9 +101,26 @@ const PaymentsOverview: React.FC<PaymentsOverviewProps> = ({ payments }) => {
 
       {/* Recent Payments */}
       <div className="bg-white rounded-xl shadow-sm p-6">
-        <h3 className="text-lg font-semibold text-gray-800 mb-4">Recent Payments</h3>
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-lg font-semibold text-gray-800">Recent Payments</h3>
+          {payments.length > 4 && (
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="flex items-center space-x-1 text-blue-600 hover:text-blue-700 transition-colors"
+            >
+              <span className="text-sm font-medium">
+                {isExpanded ? 'Show Less' : 'Expand'}
+              </span>
+              {isExpanded ? (
+                <ChevronUp className="w-4 h-4" />
+              ) : (
+                <ChevronDown className="w-4 h-4" />
+              )}
+            </button>
+          )}
+        </div>
         <div className="space-y-3">
-          {payments.slice(0, 5).map((payment) => (
+          {displayedPayments.map((payment) => (
             <div key={payment.id} className="flex items-center justify-between py-2">
               <div>
                 <p className="font-medium text-gray-800">{payment.tenantName}</p>

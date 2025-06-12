@@ -3,7 +3,8 @@
 import React, { useState } from 'react';
 import { Fault } from '../../utils/mockData';
 import FaultReplyModal from './FaultReplyModal';
-import { MessageSquare } from 'lucide-react';
+import { MessageSquare, Paperclip } from 'lucide-react';
+import FaultFilesModal from './FaultFilesModal';
 
 interface FaultsListProps {
   faults: Fault[];
@@ -13,6 +14,7 @@ const FaultsList: React.FC<FaultsListProps> = ({ faults: initialFaults }) => {
   const [faults, setFaults] = useState(initialFaults);
   const [selectedFault, setSelectedFault] = useState<Fault | null>(null);
   const [isReplyModalOpen, setIsReplyModalOpen] = useState(false);
+  const [isFilesModalOpen, setIsFilesModalOpen] = useState(false);
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
@@ -55,6 +57,11 @@ const FaultsList: React.FC<FaultsListProps> = ({ faults: initialFaults }) => {
     );
   };
 
+  const handleViewFilesClick = (fault: Fault) => {
+    setSelectedFault(fault);
+    setIsFilesModalOpen(true);
+  };
+
   return (
     <>
       <div className="space-y-6">
@@ -74,6 +81,14 @@ const FaultsList: React.FC<FaultsListProps> = ({ faults: initialFaults }) => {
                     {fault.status.replace('-', ' ')}
                   </span>
                 </div>
+                <button
+                  onClick={() => handleViewFilesClick(fault)}
+                  className="flex items-center space-x-2 px-3 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+                  title="View uploaded files and images"
+                >
+                  <Paperclip className="w-4 h-4" />
+                  <span>View Files</span>
+                </button>
                 <button
                   onClick={() => handleReplyClick(fault)}
                   className="flex items-center space-x-2 px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
@@ -106,6 +121,15 @@ const FaultsList: React.FC<FaultsListProps> = ({ faults: initialFaults }) => {
           setSelectedFault(null);
         }}
         onSubmit={handleReplySubmit}
+      />
+
+      <FaultFilesModal
+        fault={selectedFault}
+        isOpen={isFilesModalOpen}
+        onClose={() => {
+          setIsFilesModalOpen(false);
+          setSelectedFault(null);
+        }}
       />
     </>
   );
