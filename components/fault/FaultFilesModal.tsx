@@ -86,11 +86,29 @@ const FaultFilesModal: React.FC<FaultFilesModalProps> = ({ fault, isOpen, onClos
   };
 
   const handleFileClick = (file: FaultFile) => {
-    if (file.type === 'image') {
-      setSelectedFile(file);
-    } else {
-      // For non-image files, trigger download or open in new tab
-      window.open(file.url, '_blank');
+    switch (file.type) {
+      case 'image':
+        // For images, set as  selected for preview
+        setSelectedFile(file);
+        break;
+      case 'document':
+        // For documents, check if it's a PDF
+        if (file.url.endsWith('.pdf')) {
+          // For PDF documents, open in a new tab
+          setSelectedFile(file);
+        }
+        break;
+      case 'video':
+        // For documents, check if it's a PDF
+        if (file.url.endsWith('.mp4') || file.url.endsWith('.mov') || file.url.endsWith('.avi')) {
+          // For videos, set as selected for preview
+          setSelectedFile(file);
+        }
+        break;
+      default:
+        // For other file types, just open in a new tab
+        window.open(file.url, '_blank');
+        return;
     }
   };
 
@@ -273,11 +291,36 @@ const FaultFilesModal: React.FC<FaultFilesModalProps> = ({ fault, isOpen, onClos
                   </div>
 
                   <div className="bg-gray-50 rounded-lg p-4 mb-4">
-                    <img
-                      src={selectedFile.url}
-                      alt={selectedFile.name}
-                      className="w-full h-auto max-h-96 object-contain rounded-lg"
-                    />
+                    {selectedFile.type === 'image' && (
+                      <img
+                        src={selectedFile.url}
+                        alt={selectedFile.name}
+                        className="w-full h-auto max-h-96 object-contain rounded-lg"
+                      />
+                    )}
+                    {selectedFile.type === 'document' && selectedFile.url.endsWith('.pdf') && (
+                      <iframe
+                        src={selectedFile.url}
+                        title={selectedFile.name}
+                        className="w-full h-96 rounded-lg"
+                      />
+                    )}
+                    {selectedFile.type === 'video' && (
+                      <video
+                        controls
+                        src={selectedFile.url}
+                        className="w-full max-h-96 rounded-lg"
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    )}
+                    {/* Optionally, handle unsupported preview types */}
+                    {selectedFile.type === 'document' && !selectedFile.url.endsWith('.pdf') && (
+                      <div className="text-center text-gray-500 py-8">
+                        <FileText className="w-12 h-12 mx-auto mb-2" />
+                        <p>No preview available for this document type.</p>
+                      </div>
+                    )}
                   </div>
 
                   <div className="space-y-3">
