@@ -19,9 +19,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*", "./utils", "./components", "./assets" ,"./types", "./context","./services"],
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/payments/page.jsx", "components/payments/PaymentHistory.jsx", "components/properties/PropertyForm.jsx", "components/properties/PropertyList.jsx", "app/properties/page.jsx", "app/tenants/page.jsx", "types/index.js", "components/tenants/TenantsList.jsx", "components/tenants/TenantForm.jsx", "app/fault/page.jsx", "components/fault/FaultList.jsx", "components/fault/FaultReplyModal.jsx", "components/dashboard/PaymentOverview.jsx", "components/dashboard/QuerieOverview.jsx"],
   "exclude": ["node_modules"]
 }
