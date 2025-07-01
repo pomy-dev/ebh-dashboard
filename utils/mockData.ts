@@ -34,6 +34,8 @@ export const properties: Property[] = [
   }
 ];
 
+  
+
 export const payments: Payment[] = [
   {
     id: '1',
